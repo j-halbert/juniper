@@ -248,7 +248,7 @@ macro_rules! graphql_interface {
                         let expected_type_name = (<$resolver_src as $crate::GraphQLType<_>>::name(&())).unwrap();
                         let enriched_expected_type_name = format!("Enriched{}", expected_type_name);
                         if (type_name == expected_type_name) || (type_name == enriched_expected_type_name.as_str()) {
-                            return executor.resolve(&$resolver_ctx, &$resolver_expr);
+                            return executor.resolve(&executor.context(), &$resolver_expr);
                         }
                     )*
 
